@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    
+    .container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+    
+    p {
+        color: #7f8c8d;
+        font-size: 1.1em;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    li {
+        padding: 15px 0;
+        border-bottom: 2px solid #ecf0f1;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.1em;
+    }
+    
+    li:last-child {
+        border-bottom: none;
+    }
+    
+    button#rzp-button1 {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        display: block;
+        margin: 30px auto;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    button#rzp-button1:hover {
+        background-color: #c0392b;
+        transform: scale(1.05);
+    }
+    
+    button#rzp-button1:active {
+        transform: scale(1);
+    }
+    
+    #total_item_amount {
+        color: #e74c3c;
+        font-weight: 600;
+    }
+    #order-placed-section {
+        border: 2px solid green;
+        padding: 10px;
+        background-color: #e8f5e9;
+        margin-top: 20px;
+    }
+    
+    #order-success-message {
+        color: green;
+    }
+    .button-link {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: #e74c3c; /* Change this to your desired button color */
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+      
+      .button-link:hover {
+        background-color: #c0392b; /* Change this to the hover color if desired */
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    
+    <!--================End Home Banner Area =================-->
+    <body>
+      <div class="container">
+        <div id="order-placed-section" style="display: none;">
+            <h2>Order Placed</h2>
+            <p id="order-success-message"></p>
+        </div>
+        <h1>Checkout</h1>
+        <p>Order Summary :</p>
+        
+        <p><a href="{% url 'bill_invoice' %}" target="_blank" class="button-link">View Your Bill</a></p>
+
+
+        <ul>
+            {% for item in cart_items %}
+            <li>{{ item.product.product_name }} x {{ item.quantity }}</li>
+            {% endfor %}
+        </ul>
+        <p>Total Amount: &#8377<span id="total_item_amount">{{total_amount}}</span></p>
+
+        <div class="user-profile-details">
+            <h2>Shipping Details</h2>
+            {% if user_profile %}
+                <p>First Name: {{ user_profile.first_name }}</p>
+                <p>Last Name: {{ user_profile.last_name }}</p>
+                <p>Email: {{ user_profile.user.email }}</p>
+                <p>Phone Number: {{ user_profile.phone_number }}</p>
+                <p>Address: {{ user_profile.address }}</p>
+                <p>Pincode: {{ user_profile.pincode }}</p>
+                <p>City: {{ user_profile.city }}</p>
+                <p>State: {{ user_profile.state }}</p>
+                <!-- Display other profile details as needed -->
+            {% else %}
+                <p>No profile details available.</p>
+            {% endif %}
+        </div>
+    
+        <button id="rzp-button1">Pay with Razorpay</button>
+    </div>
+    <div id="checkout-data" data-email="{{ email }}" data-fullname="{{ full_name }}">
+    </div>
+    <script>
+        var handlePaymentUrl = "{% url 'handle-payment' %}";
+    </script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+
+
+  </body>
+</html>

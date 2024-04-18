@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sanitary Ware Shop</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    .navbar {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+    
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background-color: #f4f4f4;
+        float: left;
+    }
+    
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .sidebar ul li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .sidebar ul li a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .sidebar ul li a:hover {
+        color: #007bff;
+    }
+    
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+    
+    .footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .sidebar ul li a {
+        color: #fff;
+        background-color: #007bff;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        transition: background 0.3s ease;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .sidebar ul li a:hover {
+        background-color: #0056b3;
+    }
+    
+    .default-profile-image {
+        width: 30px; /* Set the desired width for the default image */
+        height: 30px; /* Set the desired height for the default image */
+      }
+
+      .small-profile-image {
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+      }
+</style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Sanitary Ware Shop</div>
+        <div class="profile">
+    
+            <span class="welcome">Welcome, Plumber</span>
+            <a class="nav-link scrollto" href="{% url 'profile' %}" id="usernameDropdown" name="image" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <strong> Welcome, {{ user.username }}</strong> <i class="bi bi-caret-down"></i>
+                <div class="profile-picture-round">
+                  {% if user_profile.image %}
+                    <!-- Link the profile picture to the profile page -->
+                    <a href="{% url 'profile' %}">
+                      <img src="{{ user_profile.image.url }}" alt="User Profile Picture" class="profile-image  small-profile-image" >
+                    </a>
+                  {% else %}
+                    <!-- Display the default profile picture with a specific size linked to the profile page -->
+                    <a href="{% url 'profile' %}">
+                      <img src="{% static '/img/default image.jpg' %}" alt="Default Profile Picture" class="default-profile-image small-profile-image">
+                    </a>
+                  {% endif %}
+                </div>
+              </a>
+              
+            <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            {% comment %} <li><a href="#">View Products</a></li> {% endcomment %}
+        
+            <li><a href="{% url 'add_plumber_availability' %}">Availability</a></li>
+            <li><a href="{% url 'service_request_details' %}">service_request</a></li>
+            {% comment %} <li><a href="#">Add SM</a></li>
+            <li><a href="#">Job Application </a></li> {% endcomment %}
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Your content goes here -->
+        <body>
+            <h1>Add Plumber Availability</h1>
+            <form method="post">
+                {% csrf_token %}
+                
+                <label for="availability_date">Availability Date:</label>
+                <input type="date" id="availability_date" name="availability_date" required><br><br>
+                
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required><br><br> 
+                
+                <label for="district">District:</label>
+                <select id="district" name="district" required>
+                    <option value="">Select District</option>
+                    <option value="Pathanamthitta">Pathanamthitta</option>
+                    <option value="district2">District 2</option>
+                    <option value="district3">District 3</option>
+                    <!-- Add more options as needed -->
+                </select><br><br>
+                
+                <button type="submit">Submit</button>
+            </form>
+        
+            <script>
+                // Function to set minimum date to today for plumbers
+                function setMinimumDateForPlumber() {
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                    var yyyy = today.getFullYear();
+            
+                    today = yyyy + '-' + mm + '-' + dd;
+                    document.getElementById("availability_date").setAttribute("min", today);
+                }
+            
+                // Call the function when the page is loaded
+                setMinimumDateForPlumber();
+            </script>
+            
+        </body>
+    </div>
+
+    
+
+
+</body>
+
+</html>

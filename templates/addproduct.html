@@ -1,0 +1,558 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sanitary Ware Shop Admin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .welcome {
+            font-weight: bold;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .content {
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        /* Add space between list items and style as boxes with colors */
+        .sidebar li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        
+        /* Style specific list items differently */
+        .sidebar li:nth-child(1) {
+            background-color: #ff9999; /* Add Products */
+        }
+        
+        .sidebar li:nth-child(2) {
+            background-color: #66b3ff; /* View Products */
+        }
+        
+        .sidebar li:nth-child(3) {
+            background-color: #99ff99; /* Analytics */
+        }
+        
+        
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #003300; /* Dark green color for the header */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #003300; /* Dark green color for the footer */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 40%;
+            margin: 0 auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for form labels */
+        .form-group label {
+            font-weight: bold;
+        }
+
+        /* Style for form inputs */
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        /* Style for form buttons */
+        .btn-primary {
+            background-color: #79bd82;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #27472b;
+        }
+        .sidebar ul li a {
+            text-decoration: none; /* Remove underline from anchor elements */
+            color: inherit; /* Use the default text color for the links */
+        }
+        
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        /* Add space between list items and style as boxes with colors */
+        .sidebar li {
+            margin-bottom: 10px;
+            padding: 30px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        
+        /* Style specific list items differently */
+        .sidebar li:nth-child(1) {
+            background-color: #ff9999; 
+/* Add Products */
+        }
+        
+        .sidebar li:nth-child(2) {
+            background-color: #66b3ff; /* View Products */
+        }
+        
+        .sidebar li:nth-child(3) {
+            background-color: #99ff99; /* Analytics */
+        }
+        
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .sidebar-button {
+            background-color: #ddd;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .sidebar-button:hover {
+            background-color: #ccc;
+        }
+        .sidebar ul li a {
+            text-decoration: none; /* Remove underline from anchor elements */
+            color: inherit; /* Use the default text color for the links */
+        }
+
+
+
+.sidebar li {
+    margin-bottom: 50px; /* Increase the margin between list items */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+}
+        
+.sidebar li {
+    margin-bottom: 100px; /* Increase the margin between list items */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Style specific list items differently */
+.sidebar li:nth-child(1) {
+    background-color: #ff9999;
+}
+
+.sidebar li:nth-child(2) {
+    background-color: #66b3ff;
+}
+
+/* Add border to the list items */
+.sidebar li {
+    border: 2px solid #ccc;
+}
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="profile">
+                <!--<img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">-->
+                <span class="welcome">Welcome, Stock Manager</span>
+            </div>
+            
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="sidebar">
+            <h2>Options</h2>
+            <ul>
+               
+                <li><a href="{% url 'addproduct' %}">Add Products</a></li>
+                <li>View Products</li>
+                <li>Analytics</li>
+                <li>My Orders</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <!-- Content for orders received, add product here, view your products -->
+            <div class="form-container" id="product-form">
+                <form action="{% url 'addproduct' %}" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm();">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" name="product-name" class="form-control" required oninput="validateProductName(this)">
+                        <span id="product-name-error" class="error-text"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="category-name">Category Name</label>
+                        <select id="category-name" name="category-name" class="form-control" required onchange="updateSubcategoryOptions()">
+                            <option value="">Select</option>
+                            <option value="shower">Shower</option>
+                            <option value="basins">Basins</option>
+                            <!--<option value="seed">Seed</option>
+                            <option value="accessories">Accessories</option>
+                            <!-- Add more categories as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subcategory-name">Subcategory Name</label>
+                        <select id="subcategory-name" name="subcategory-name" class="form-control" required>
+                            <!-- Subcategory options will be added dynamically here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control" required>
+                    </div>
+                    <div class "form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Product Price</label>
+                        <input type="number" id="price" name="price" class="form-control" required oninput="validatePrice(this); calculateSalePrice(document.getElementById('discount'))">
+                        <span id="price-error" class="error-text"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="discount">Discount (%)</label>
+                        <input type="number" id="discount" name="discount" class="form-control" oninput="calculateSalePrice(this)">
+                    </div>
+                    <div class="form-group">
+                        <label for="sale-price">Sale Price</label>
+                        <input type="number" id="sale-price" name="sale-price" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status" class="form-control" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Product Image</label>
+                        <input type="file" id="product-image" name="product-image" class="form-control" accept="image/*" required onchange="validateProductImage(this)">
+                        <span id="product-image-error" class="error-text"></span>
+                    </div><!-- Rest of your form content -->
+                    <button type="submit" id="add-product-button" class="btn btn-primary">Add Product</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                </form>
+            </div>
+        
+        </div>
+    </div>
+    <script>
+        function updateSubcategoryOptions() {
+            const categorySelect = document.getElementById('category-name');
+            const subcategorySelect = document.getElementById('subcategory-name');
+    
+            // Define subcategory options for each category
+            const subcategoryOptions = {
+                shower: ['built-in showers', 'Standalone shower'],
+                basins: ['Full Pedestal Basins','Semi Pedestal Basins'],
+                 // No subcategories
+                // Add more categories and options as needed
+            };
+    
+            // Get the selected category
+            const selectedCategory = categorySelect.value;
+    
+            // Clear existing options
+            subcategorySelect.innerHTML = '';
+    
+            // Add new options based on the selected category
+            for (const option of subcategoryOptions[selectedCategory] || []) {
+                const optionElement = document.createElement('option');
+                optionElement.value = option;
+                optionElement.textContent = option;
+                subcategorySelect.appendChild(optionElement);
+            }
+        }
+           
+         function calculateSalePrice(discountInput) {
+        const priceInput = document.getElementById('price');
+        const salePriceInput = document.getElementById('sale-price');
+        const discount = discountInput.value || 0;
+        const price = priceInput.value || 0;
+        const discountedPrice = price - (price * (discount / 100));
+        salePriceInput.value = discountedPrice.toFixed(2);
+    }
+
+    function validatePrice(input) {
+        const price = input.value;
+            const priceError = document.getElementById('price-error');
+        
+            // Check if the input is a positive number
+            if (isNaN(price) || price <= 0) {
+                priceError.textContent = 'Price must be a positive number.';
+                input.classList.add('is-invalid');
+                return false;
+            } else {
+                priceError.textContent = ''; // Clear the error message
+                input.classList.remove('is-invalid');
+                return true;
+            }
+                // ... (your existing code for price validation)
+                calculateSalePrice(document.getElementById('discount'));
+            }
+        
+            
+                // Call the updateSubcategoryOptions function when the page loads to set the initial options
+                updateSubcategoryOptions();
+    </script>
+
+
+
+
+
+
+    <script>
+        function preventZeroAndNegative(event) {
+          const input = event.target;
+          const value = parseFloat(input.value.trim());
+      
+          if (value <= 0 || isNaN(value)) {
+            input.value = ''; // Clear the input field if zero or a negative number is entered
+          }
+        }
+      
+        document.addEventListener('DOMContentLoaded', function() {
+          const quantityInput = document.getElementById('quantity');
+          const priceInput = document.getElementById('price');
+          const discountInput = document.getElementById('discount');
+      
+          quantityInput.addEventListener('input', preventZeroAndNegative);
+          priceInput.addEventListener('input', preventZeroAndNegative);
+          discountInput.addEventListener('input', preventZeroAndNegative);
+      
+          // Clear stored values on page load
+          localStorage.removeItem('quantity');
+          localStorage.removeItem('price');
+          localStorage.removeItem('discount');
+        });
+      </script>
+      
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const productNameInput = document.getElementById('product-name');
+      
+          productNameInput.addEventListener('input', preventNegativeAndZero);
+      
+          function preventNegativeAndZero(event) {
+            const input = event.target;
+            const value = input.value.trim();
+      
+            if (value === '-' || value === '0') {
+              input.value = ''; // Clear the input field if the value is '-' or '0'
+            }
+          }
+        });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const descriptionInput = document.getElementById('description');
+      
+          descriptionInput.addEventListener('input', preventNumericInput);
+      
+          function preventNumericInput(event) {
+            const input = event.target;
+            const value = input.value.trim();
+      
+            if (/^\d+$/.test(value)) {
+              input.value = ''; // Clear the input field if it contains only numeric characters
+            }
+          }
+        });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Retrieve all input fields
+          const inputFields = document.querySelectorAll('input[type="text"], input[type="number"], textarea');
+      
+          // Loop through each input field and clear its value
+          inputFields.forEach(function(input) {
+            input.value = ''; // Clear the value of the input field
+          });
+        });
+      </script>
+      
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('add-product-form'); // Replace 'add-product-form' with your actual form ID
+    form.addEventListener('submit', function(event) {
+      const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+      let isEmpty = false;
+
+      inputs.forEach(function(input) {
+        if (!input.value.trim()) {
+          isEmpty = true;
+        }
+      });
+
+      if (isEmpty) {
+        event.preventDefault(); // Prevent form submission if any required field is empty
+        alert('Please fill in all required fields.');
+        // You can also customize how you want to alert the user about the empty fields
+      }
+    });
+  });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('add-product-form'); // Replace 'add-product-form' with your actual form ID
+      form.addEventListener('submit', function(event) {
+        const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+        let isEmpty = false;
+  
+        inputs.forEach(function(input) {
+          if (input.type === 'number' && input.name === 'discount') {
+            if (input.value.trim() === '') {
+              isEmpty = true;
+            }
+            if (input.value.trim() !== '' && isNaN(parseFloat(input.value))) {
+              isEmpty = true;
+            }
+          } else if (!input.value.trim()) {
+            isEmpty = true;
+          }
+        });
+  
+        if (isEmpty) {
+          event.preventDefault(); // Prevent form submission if any required field is empty or has an invalid discount value
+          alert('Please fill in all required fields with valid values, including the discount.');
+          // You can also customize how you want to alert the user about the empty fields or invalid values
+        }
+      });
+    });
+  </script>
+  
+    
+
+
+
+  
+</body>
+
+</html>

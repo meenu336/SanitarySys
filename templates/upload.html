@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display</title>
+</head>
+<body>
+    <h1>Image Display</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="displayImage()">Display Image</button>
+    <br>
+    <img src="" id="displayedImage" alt="Displayed Image">
+    <script>
+        function displayImage() {
+            const input = document.getElementById('imageInput');
+            const img = document.getElementById('displayedImage');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>

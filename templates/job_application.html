@@ -1,0 +1,627 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/linericon/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/themify-icons.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/flaticon.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/owl-carousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/lightbox/simpleLightbox.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/nice-select/css/nice-select.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/animate-css/animate.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/jquery-ui/jquery-ui.css' %}" />
+  <!-- main css -->
+  <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/responsive.css' %}" />
+
+  <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <style>
+        {% comment %} body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150vh;
+            margin: 0;
+        } {% endcomment %}
+
+        table {
+            width: 100%;
+            max-width: 600px; /* Adjust the max-width as needed */
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea {
+            width: calc(50% - 12px); /* Adjust the width to make room for borders */
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            align:center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .default-profile-image {
+            width: 30px; /* Set the desired width for the default image */
+            height: 30px; /* Set the desired height for the default image */
+          }
+          
+          /* Navbar dropdown */
+      .navbar-nav {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+      }
+      
+      .nav-item {
+        position: relative;
+      }
+      
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        min-width: 200px;
+        padding: 10px 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+      }
+      
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 8px 20px;
+        text-decoration: none;
+        color: #333;
+      }
+      
+      /* Main options */
+      .main-option {
+        cursor: pointer;
+      }
+      
+      /* Sub-options */
+      .sub-options {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: none;
+       
+      }
+      left: 100%;
+      .sub-options .dropdown-item {
+        white-space: nowrap;
+      }
+      
+      /* Show sub-options on hover */
+      .nav-item:hover .sub-options {
+        display: block;
+      }
+      
+      .small-profile-image {
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+      }
+
+      h2 {
+        text-align: center;
+      }
+    
+      .header_area {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        background-color: #fff; /* Adjust the background color as needed */
+    }
+    
+    .navbar {
+        position: relative;
+    }
+    
+    /* Add padding to the body to avoid content being hidden under the fixed header */
+    body {
+        padding-top: 100px; /* Adjust the padding-top based on your header height */
+    }
+    </style>
+</head>
+<body>
+    <header class="header_area">
+        <div class="top_menu">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="float-left">
+                  <p>Phone: +01 256 25 235</p>
+                  <p>email: info@eiser.com</p>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="float-right">
+                  <ul class="right_side">
+                    <li>
+                      <!--<a href="cart.html">
+                        gift card
+                      </a>-->
+                    </li>
+                    <li>
+                      <!--<a href="tracking.html">
+                        track order
+                      </a>-->
+                    </li>
+                    <li>
+                      <!--<a href="contact.html">
+                        Contact Us
+                      </a>-->
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_menu">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <a class="navbar-brand logo_h" href="index.html">
+                <img src="{% static '/img/logo3.png' %}" alt="" />
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+                <div class="row w-100 mr-0">
+                  <div class="col-lg-7 pr-0">
+                    <ul class="nav navbar-nav center_nav pull-right">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                      </li>
+                      
+    
+                      <li class="nav-item submenu dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="showersDropdown">Showers</a>
+                            <div class="dropdown-menu" aria-labelledby="showersDropdown" id="showerSubCategories">
+                                <a class="dropdown-item" href="{% url 'built_in_showers' %}">Built-in Showers</a>
+                                <a class="dropdown-item" href="{% url 'standalone_showers' %}">Standalone Showers</a>
+                            </div>
+                            <a class="dropdown-item dropdown-toggle" href="#" id="basinsDropdown">Basins</a>
+                            <div class="dropdown-menu" aria-labelledby="basinsDropdown" id="basinsSubCategories">
+                                <a class="dropdown-item" href="{% url 'full_pedestal_basins' %}">Full Pedestal Basins</a>
+                                <a class="dropdown-item" href="{% url 'semi_pedestal_basins' %}">Semi Pedestal Basins</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                      <li class="nav-item submenu dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                          aria-expanded="false">Services</a>
+                        <ul class="dropdown-menu">
+                          <!--<li class="nav-item">
+                            <a class="nav-link" href="blog.html">Services</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="single-blog.html">Blog Details</a>
+                          </li>-->
+                        </ul>
+                      </li>
+                      <li class="nav-item submenu dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                          aria-expanded="false">Career</a>
+                        <ul class="dropdown-menu">
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'apply' %}">Apply now</a>
+                          </li>
+                          <!--<li class="nav-item">
+                            <a class="nav-link" href="elements.html">Elements</a>
+                          </li>-->
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                    </ul>
+                  </div>
+    
+                  <div class="col-lg-5 pr-0">
+                    <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                      <li class="nav-item">
+                        <a href="#" class="icons">
+                          <i class="ti-search" aria-hidden="true"></i>
+                        </a>
+                      </li>
+    
+                      <li class="nav-item">
+                        <a href="{% url 'cart' %}" class="icons">
+                          <i class="ti-shopping-cart"></i>
+                        </a>
+                      </li>
+    
+                      
+                      
+                      
+    
+                      <a class="nav-link scrollto" href="{% url 'profile' %}" id="usernameDropdown" name="image" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong> Welcome, {{ user.username }}</strong> <i class="bi bi-caret-down"></i>
+                        <div class="profile-picture-round">
+                          {% if user_profile.image %}
+                            <!-- Link the profile picture to the profile page -->
+                            <a href="{% url 'profile' %}">
+                              <img src="{{ user_profile.image.url }}" alt="User Profile Picture" class="profile-image  small-profile-image" >
+                            </a>
+                          {% else %}
+                            <!-- Display the default profile picture with a specific size linked to the profile page -->
+                            <a href="{% url 'profile' %}">
+                              <img src="{% static '/img/default image.jpg' %}" alt="Default Profile Picture" class="default-profile-image small-profile-image">
+                            </a>
+                          {% endif %}
+                        </div>
+                      </a>
+                      
+                      
+                      
+                      <!--<li class="nav-item">
+                        <a href="{% url 'profile' %}" class="icons">
+                          <div class="profile-image">
+                            {% if user.profile_image %}
+                              <img src="{{ user.profile_image.url }}" alt="{{ user.username }}'s Profile Image">
+                            {% else %}
+                              <i class="ti-user" aria-hidden="true"></i> <!-- Placeholder icon if user has no profile image -->
+                            <!--{% endif %}
+                            {{ user.username }}
+                          </div>
+                        </a>
+                      </li>-->
+                      
+    
+                      <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="icons" id="logout-link">
+                          <i class="fa fa-power-off"></i>
+                            <!--<i class="ti-heart" aria-hidden="true"></i>-->
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+<br><br>
+
+<h2>Job Application Form</h2>
+
+<form action="{% url 'apply' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        
+        <tr>
+            <th><label for="full_name">Full Name:</label></th>
+            <td><input type="text" id="full_name" name="full_name" class="form-control" value="{{ user_profile.first_name }} {{ user_profile.last_name }}" required></td>
+            <td><span class="error-message" id="full-name-error"></span></td>
+        </tr>
+        <tr>
+            <th><label for="email">Email:</label></th>
+            <td><input type="email" id="email" name="email" class="form-control" value="{{ user_profile.user.email }}" required></td>
+            <td><span class="error-message" id="email-error"></span></td>
+        </tr>
+        <tr>
+            <th><label for="phone">Phone Number:</label></th>
+            <td><input type="tel" id="phone" name="phone" class="form-control" value="{{ user_profile.phone_number }}" required></td>
+            <td><span class="error-message" id="phone-error"></span></td>
+        </tr>
+        <tr>
+            <th><label for="gender">Gender:</label></th>
+            <td>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="full_address">Full Address:</label></th>
+            <td><textarea id="full_address" name="full_address" class="form-control" rows="4" cols="50" required>{{ user_profile.address }},{{ user_profile.city }},{{ user_profile.state }},{{ user_profile.pincode }}</textarea></td>
+            <td><span class="error-message" id="full_address-error"></span></td>
+        </tr>
+        <tr>
+            <th><label for="vehicle_type">Vehicle Type:</label></th>
+            <td>
+                <select id="vehicle_type" name="vehicle_type" required>
+                    <option value="bike">Bike</option>
+                    <option value="car">Car</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="vehicle_number">Vehicle Number:</label></th>
+            <td><input type="text" id="vehicle_number" name="vehicle_number" required></td>
+            <td><span class="error-message" id="vehicle-number-error"></span></td>
+        </tr>
+        <tr>
+            <th><label for="license">Upload License (PDF only):</label></th>
+            <td><input type="file" id="license" name="license" accept=".pdf" required></td>
+        </tr>
+        <tr>
+            <th><label for="highest_education">Highest Education:</label></th>
+            <td>
+                <select id="highest_education" name="highest_education" required>
+                    <option value="10th">10th Level</option>
+                    <option value="12th">12th Level</option>
+                    <option value="degree">Degree</option>
+                    <option value="degree">Diploma</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="languages_known">Languages Known:</label></th>
+            <td><input type="text" id="languages_known" name="languages_known" required></td>
+        </tr>
+        <tr>
+            <th><label for="years_of_experience">Years of Experience:</label></th>
+            <td>
+                <select id="years_of_experience" name="years_of_experience" required>
+                    <option value="0">0</option>
+                    <option value="1-2">1-2</option>
+                    <option value="2-3">2-3</option>
+                    <option value="3-5">3-5</option>
+                    <option value="more">More than 5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="resume">Upload Resume (PDF only):</label></th>
+            <td><input type="file" id="resume" name="resume" accept=".pdf" required></td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit">Submit Application</button>
+</form>
+
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      FilePond.registerPlugin(FilePondPluginFileValidateType);
+  
+      const resumeInput = document.getElementById('resume');
+  
+      FilePond.create(resumeInput, {
+          acceptedFileTypes: ['application/pdf'],
+          labelFileTypeNotAllowed: 'Only PDF files are allowed',
+          allowFileTypeValidation: true
+      });
+  });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+    
+        const licenseInput = document.getElementById('license');
+    
+        FilePond.create(licenseInput, {
+            acceptedFileTypes: ['application/pdf'],
+            labelFileTypeNotAllowed: 'Only PDF files are allowed',
+            allowFileTypeValidation: true
+        });
+    });
+    </script>
+    
+  
+
+    <script>
+      
+      var emailInput = document.getElementById('email');
+      var emailError = document.getElementById('email-error');
+      emailInput.addEventListener('input', function() {
+          validateEmail(emailInput.value);
+      });
+  
+      // Add validation functions for other form fields as needed
+  
+      
+  
+      function validateEmail(email) {
+          emailError.textContent = "";
+          var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+          if (!emailRegex.test(email)) {
+              emailError.textContent = "Enter a valid email address.";
+          }
+      }
+  
+      // Add validation functions for other form fields as needed
+  
+      
+  </script>
+
+
+  <script>
+    var fullNameInput = document.getElementById('full_name');
+    var fullNameError = document.getElementById('full-name-error');
+    fullNameInput.addEventListener('input', function() {
+        validateFullName(fullNameInput.value);
+    });
+
+    function validateFullName(fullName) {
+        fullNameError.textContent = "";
+        var fullNameRegex = /^[a-zA-Z\s]+$/;
+        if (!fullNameRegex.test(fullName)) {
+            fullNameError.textContent = "Full name should only contain alphabetic characters and spaces.";
+        }
+    }
+
+    // Add validation functions for other form fields as needed
+
+    function validateForm() {
+        var isValid = true;
+
+        // Validate each form field
+        validateFullName(fullNameInput.value);
+        validateEmail(emailInput.value);
+
+        // Check if any errors are present
+        if (fullNameError.textContent || emailError.textContent) {
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
+
+
+<script>
+  var phoneInput = document.getElementById('phone');
+  var phoneError = document.getElementById('phone-error');
+  phoneInput.addEventListener('input', function() {
+      validatePhoneNumber(phoneInput.value);
+  });
+
+  function validatePhoneNumber(phoneNumber) {
+      phoneError.textContent = "";
+      var phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phoneNumber)) {
+          phoneError.textContent = "Phone number should contain exactly 10 digits.";
+      }
+      // Additional check for non-numeric characters
+      else if (!/^\d+$/.test(phoneNumber)) {
+          phoneError.textContent = "Phone number should contain only numeric digits.";
+      }
+  }
+</script>
+
+<script>
+  var fullAddressInput = document.getElementById('full_address');
+  var fullAddressError = document.getElementById('full_address-error');
+  fullAddressInput.addEventListener('input', function() {
+      validateFullAddress(fullAddressInput.value);
+  });
+
+  function validateFullAddress(fullAddress) {
+      fullAddressError.textContent = "";
+      if (fullAddress.trim() === "") {
+          fullAddressError.textContent = "Full address is required.";
+      } else if (!/^[a-zA-Z0-9\s,.'-]*$/.test(fullAddress)) {
+          fullAddressError.textContent = "Full address should only contain letters, numbers, spaces, commas, periods, single quotes, hyphens.";
+      }
+  }
+</script>
+
+
+<script>
+  var vehicleNumberInput = document.getElementById('vehicle_number');
+  var vehicleNumberError = document.getElementById('vehicle-number-error');
+  vehicleNumberInput.addEventListener('input', function() {
+      validateVehicleNumber(vehicleNumberInput.value);
+  });
+
+  function validateVehicleNumber(vehicleNumber) {
+      vehicleNumberError.textContent = "";
+      if (vehicleNumber.trim() === "") {
+          vehicleNumberError.textContent = "Vehicle number is required.";
+      } else if (!/^[a-zA-Z0-9\s]*$/.test(vehicleNumber)) {
+          vehicleNumberError.textContent = "Vehicle number should contain only letters, numbers, and spaces.";
+      }
+  }
+
+  // Add validation functions for other form fields as needed
+
+  function validateForm() {
+      var isValid = true;
+
+      // Validate each form field
+      validateFullName(fullNameInput.value);
+      validateEmail(emailInput.value);
+      validatePhoneNumber(phoneInput.value);
+      validateFullAddress(fullAddressInput.value);
+      validateVehicleNumber(vehicleNumberInput.value);
+
+      // Check if any errors are present
+      if (fullNameError.textContent || emailError.textContent || phoneError.textContent || fullAddressError.textContent || vehicleNumberError.textContent) {
+          isValid = false;
+      }
+
+      return isValid;
+  }
+</script>
+
+<script>
+  var languagesKnownInput = document.getElementById('languages_known');
+  var languagesKnownError = document.getElementById('languages-known-error');
+  languagesKnownInput.addEventListener('input', function() {
+      validateLanguagesKnown(languagesKnownInput.value);
+  });
+
+  function validateLanguagesKnown(languagesKnown) {
+      languagesKnownError.textContent = "";
+      if (languagesKnown.trim() === "") {
+          languagesKnownError.textContent = "Languages known is required.";
+      } else if (/\d/.test(languagesKnown)) {
+          languagesKnownError.textContent = "Languages known should not contain numbers.";
+      }
+  }
+
+  // Add validation functions for other form fields as needed
+
+  function validateForm() {
+      var isValid = true;
+
+      // Validate each form field
+      validateFullName(fullNameInput.value);
+      validateEmail(emailInput.value);
+      validatePhoneNumber(phoneInput.value);
+      validateFullAddress(fullAddressInput.value);
+      validateVehicleNumber(vehicleNumberInput.value);
+      validateLanguagesKnown(languagesKnownInput.value);
+
+      // Check if any errors are present
+      if (fullNameError.textContent || emailError.textContent || phoneError.textContent || fullAddressError.textContent || vehicleNumberError.textContent || languagesKnownError.textContent) {
+          isValid = false;
+      }
+
+      return isValid;
+  }
+</script>
+
+
+</body>
+</html>

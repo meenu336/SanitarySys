@@ -1,0 +1,306 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sanitary Ware Shop Admin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .welcome {
+            font-weight: bold;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .content {
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        /* Add space between list items and style as boxes with colors */
+        .sidebar li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        
+        /* Style specific list items differently */
+        .sidebar li:nth-child(1) {
+            background-color: #ff9999; /* Add Products */
+        }
+        
+        .sidebar li:nth-child(2) {
+            background-color: #66b3ff; /* View Products */
+        }
+        
+        .sidebar li:nth-child(3) {
+            background-color: #99ff99; /* Analytics */
+        }
+        
+        .sidebar li:nth-child(4) {
+            background-color: #ffcc99; /* My Orders */
+        }
+        
+        .sidebar li:nth-child(5) {
+            background-color: #ffcc00; /* Partners */
+        }
+        
+        .sidebar li:nth-child(6) {
+            background-color: #ccffcc; /* Calendar */
+        }
+        
+        .sidebar li:nth-child(7) {
+            background-color: #ffccff; /* Users */
+        }
+        
+        .sidebar li:nth-child(8) {
+            background-color: #cc99ff; /* Sales */
+        }
+        
+        .sidebar li:nth-child(9) {
+            background-color: #ff6666; /* Orders Received */
+        }
+        
+        .sidebar li:nth-child(10) {
+            background-color: #66cc66; /* Add Product Here */
+        }
+        
+        .sidebar li:nth-child(11) {
+            background-color: #ff9933; /* View Your Products */
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        body {
+            font-family: Arial, sans-serif; /* Add your background image URL here */
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border: 1px solid #ccc;
+            background-color: #0056b3;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        .edit-btn {
+            background-color: lightblue;
+            color: black; /* Set text color to black for better visibility on light blue background */
+            /* Add any other styles you want for the button */
+        }
+        
+        .delete-button {
+            background-color: red;
+            color: white; /* Set text color to white for better visibility on red background */
+            /* Add any other styles you want for the button */
+        }
+    
+        .delete-button:hover {
+            background-color: #569c5f; /* Darker red color on hover */
+        }
+
+        /* Header and Footer Styles */
+        .header {
+            background-color: #003300; /* Dark green color for header */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .footer {
+            background-color: #003300; /* Dark green color for footer */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .b1{
+            float:right;
+            font-weight: bold;
+            background-color:#003300;
+            color: #ffffff;
+            border: none;
+            font-weight: bold;
+        
+            
+          
+        }
+        .sidebar ul li a {
+            text-decoration: none; /* Remove underline from anchor elements */
+            color: inherit; /* Use the default text color for the links */
+        }
+        
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="profile">
+                <span class="welcome">Welcome, Stock Manager</span>
+            </div>
+            
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="sidebar">
+            <h2>Options</h2>
+            <ul>
+               
+                <li><a href="{% url 'addproduct' %}">Add Products</a></li>
+                <li>View Products</li>
+                <li>Analytics</li>
+                <li>My Orders</li>
+
+            </ul>
+        </div>
+        <div class="main-content">
+            <!-- Content for orders received, add product here, view your products -->
+            <div class="container">
+                <table>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Subcategory</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                        <th>Product Price</th>
+                        <th>Discount</th>
+                        <th>Sale Price</th>
+                        <th>Status</th>
+                        <th>Product Image</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.product_name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.subcategory }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.discount }}%</td>
+                        <td>{{ product.sale_price }}</td>
+                        <td>{{ product.status }}</td>
+                        <td>
+                            {% if product.product_image %}
+                                <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" width="100">
+                            {% else %}
+                                No Image Available
+                            {% endif %}
+                        </td>
+                        <td>
+                               
+
+                                <form action="{% url 'edit_product' product.product_id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="">
+                                    <button type="submit" class="btn edit-btn">Edit</button>
+                                </form>
+                                {% comment %}<form action="{% url 'deleteproduct' product.id %}" method="post" style="display: inline-block;">{% endcomment %}
+                                    {% comment %} {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <button type="submit" class="btn delete-button">Delete</button> {% endcomment %}
+
+                            </form>
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        <br><br><br><br><br><br><br><br><br>
+            <!-- Footer Section -->
+            <!--<div class="footer">
+                &copy; 2023 PlantPulse
+            </div>-->
+        </body>
+        </html>
+            
+        </div>
+    </div>
+</body>
+
+</html>

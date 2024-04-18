@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability Form</title>
+</head>
+<body>
+    <h2>Availability Form</h2>
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <label for="available_date">Available Date (Tomorrow):</label><br>
+        <input type="date" id="available_date" name="available_date" min="{{ tomorrow }}" max="{{ tomorrow }}"><br><br>
+        
+        <label for="cities">Cities (Separate by comma):</label><br>
+        <textarea id="cities" name="cities" rows="4" cols="50"></textarea><br><br>
+        
+        <label for="district">District:</label><br>
+        <select id="district" name="district">
+            <option value="Pathanamthitta">Pathanamthitta</option>
+            <option value="District 2">District 2</option>
+            <option value="District 3">District 3</option>
+            <!-- Add more options as needed -->
+        </select><br><br>
+        
+        <!-- Assuming you have a way to identify the logged-in user -->
+        <input type="hidden" id="user_id" name="user_id" value="{{ user_id }}">
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // Get tomorrow's date
+        var today = new Date();
+        var tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        // Format tomorrow's date as yyyy-mm-dd
+        var yyyy = tomorrow.getFullYear();
+        var mm = tomorrow.getMonth() + 1;
+        var dd = tomorrow.getDate();
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        tomorrow = yyyy + '-' + mm + '-' + dd;
+
+        // Set min and max attributes for the date input
+        document.getElementById("available_date").setAttribute("min", tomorrow);
+        document.getElementById("available_date").setAttribute("max", tomorrow);
+    </script>
+</body>
+</html>

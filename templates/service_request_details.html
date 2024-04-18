@@ -1,0 +1,494 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sanitary Ware Shop</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    .navbar {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px 180px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%; 
+    }
+    
+    
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+    
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background-color: #f4f4f4;
+        float: left;
+    }
+    
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .sidebar ul li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .sidebar ul li a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .sidebar ul li a:hover {
+        color: #007bff;
+    }
+    
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+    
+    .footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .sidebar ul li a {
+        color: #fff;
+        background-color: #007bff;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        transition: background 0.3s ease;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .sidebar ul li a:hover {
+        background-color: #0056b3;
+    }
+    
+    .default-profile-image {
+        width: 30px; /* Set the desired width for the default image */
+        height: 30px; /* Set the desired height for the default image */
+      }
+
+      .small-profile-image {
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+</style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Sanitary Ware Shop</div>
+        <div class="profile">
+    
+            <span class="welcome">Welcome, Plumber</span>
+            <a class="nav-link scrollto" href="{% url 'profile' %}" id="usernameDropdown" name="image" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <strong> Welcome, {{ user.username }}</strong> <i class="bi bi-caret-down"></i>
+                <div class="profile-picture-round">
+                  {% if user_profile.image %}
+                    <!-- Link the profile picture to the profile page -->
+                    <a href="{% url 'profile' %}">
+                      <img src="{{ user_profile.image.url }}" alt="User Profile Picture" class="profile-image  small-profile-image" >
+                    </a>
+                  {% else %}
+                    <!-- Display the default profile picture with a specific size linked to the profile page -->
+                    <a href="{% url 'profile' %}">
+                      <img src="{% static '/img/default image.jpg' %}" alt="Default Profile Picture" class="default-profile-image small-profile-image">
+                    </a>
+                  {% endif %}
+                </div>
+              </a>
+              
+            <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            {% comment %} <li><a href="#">View Products</a></li> {% endcomment %}
+        
+            <li><a href="{% url 'add_plumber_availability' %}">Availability</a></li>
+            <li><a href="{% url 'service_request_details' %}">service_request</a></li>
+            {% comment %} <li><a href="#">Add SM</a></li>
+            <li><a href="#">Job Application </a></li> {% endcomment %}
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Your content goes here -->
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Pincode</th>
+                <th>City</th>
+                <th>District</th>
+                <th>Service Required</th>
+                <th>Description</th>
+                <th>Select Date</th>
+                <th>Created At</th> <!-- Added column header for created_at field -->
+                <th>Actions</th>
+                <th>Actions</th>
+                <th>Actions</th>
+                <th>Actions</th>
+                
+                {% comment %} <th>Actions</th> <!-- Added an extra Actions column for Delete button --> {% endcomment %}
+            </tr>
+            {% if service_requests %}
+                {% for service_request in service_requests %}
+                <tr id="request-row-{{ service_request.id }}"> <!-- Unique ID for each row -->
+                
+                        <td>{{ service_request.first_name }} {{ service_request.last_name }}</td> <!-- Updated name fields -->
+                        <td>{{ service_request.email }}</td>
+                        <td>{{ service_request.phone }}</td>
+                        <td>{{ service_request.address }}</td>
+                        <td>{{ service_request.pincode }}</td>
+
+                        <td>{{ service_request.city }}</td>
+                        <td>{{ service_request.district }}</td>
+                        <td>{{ service_request.service_required }}</td>
+                        <td>{{ service_request.description }}</td>
+                        <td>{{ service_request.select_date }}</td>
+                        <td>{{ service_request.created_at }}</td> <!-- Display created_at field -->
+                        
+                        <td>
+                            {% if service_request.id in confirmed_requests %}
+                                Confirmed
+                            {% else %}
+                                <button onclick="confirmRequest('{{ service_request.id }}')">Confirm</button>
+                            {% endif %}
+                        </td>
+
+                        
+                        <td>
+                            <!-- Reject Button with red color -->
+                            <button onclick="rejectRequest('{{ service_request.id }}')" style="background-color: #dc3545; color: #fff;">Reject</button>
+                        </td>
+
+                        {% comment %} <td>
+                            <!-- Complete Form -->
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="request_id" value="{{ service_request.id }}">
+                                <button type="submit">Complete</button>
+                            </form>
+                        </td> {% endcomment %}
+                        <td>
+                        <form id="complete-form-{{ service_request.id }}" method="post" action="{% url 'complete_service_request' service_request.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="request_id" value="{{ service_request.id }}">
+                            <button type="button" class="complete-btn">Complete</button>
+                        </form>
+                    </td>
+                        
+
+                        <td>
+                            <form method="post" action="{% url 'enter_payment' service_request_id=service_request.id %}">
+                                {% csrf_token %}
+                                <button type="submit">Payment</button>
+                                
+                            </form>
+                            
+                        </td>
+                        
+
+                        {% comment %} <td>
+                            <!-- Delete Button -->
+                            <button onclick="deleteRequest('{{ service_request.id }}')">Delete</button>
+                        </td>  {% endcomment %}
+                        
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="11">No service requests available for this city.</td> <!-- Updated colspan -->
+                </tr>
+            {% endif %}
+        </table>
+    
+    </div>
+<!-- service_request_details.html -->
+ <script>
+    function confirmRequest(requestId) {
+        fetch(`/confirm-request/${requestId}/`)
+            .then(response => {
+                if (response.ok) {
+                    // Handle success (e.g., update UI)
+                } else {
+                    // Handle error
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function rejectRequest(requestId) {
+        fetch(`/reject-request/${requestId}/`)
+            .then(response => {
+                if (response.ok) {
+                    // Handle success (e.g., update UI)
+                } else {
+                    // Handle error
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>  
+
+
+<script>
+    function confirmRequest(requestId) {
+        // Display a confirmation dialog
+        if (confirm("Are you sure you want to confirm?")) {
+            // If the user clicks "OK", proceed with the request
+            fetch(`/confirm-request/${requestId}/`)
+                .then(response => {
+                    if (response.ok) {
+                        // Handle success (e.g., update UI)
+                    } else {
+                        // Handle error
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            // If the user clicks "Cancel", do nothing
+            return false;
+        }
+    }
+
+    function rejectRequest(requestId) {
+        fetch(`/reject-request/${requestId}/`)
+            .then(response => {
+                if (response.ok) {
+                    // Handle success (e.g., update UI)
+                } else {
+                    // Handle error
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script> 
+
+
+<script>
+    function deleteRequest(requestId) {
+        // Display a confirmation dialog
+        if (confirm("Are you sure you want to delete this request?")) {
+            // If the user clicks "OK", proceed with the request
+            fetch(`/delete-request/${requestId}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') // Ensure CSRF token is included
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Handle success (e.g., update UI)
+                    // Reload the page or remove the deleted row from the UI
+                    location.reload(); // Reload the page to reflect changes
+                } else {
+                    // Handle error
+                    console.error('Error:', response.statusText);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } else {
+            // If the user clicks "Cancel", do nothing
+            return false;
+        }
+    }
+
+    // Function to get CSRF token from cookies
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Check if the cookie name matches the provided name
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
+
+<script>
+    // Get the payment button element
+    const paymentButton = document.getElementById('paymentButton');
+    
+    // Add click event listener to the payment button
+    paymentButton.addEventListener('click', function() {
+        // Get the request ID from the button's data attribute
+        const request_id = this.getAttribute('data-request-id');
+        
+        // Redirect the user to the enter_payment page with the request ID
+        window.location.href = `/enter-payment/${request_id}/`;
+    });
+</script>
+
+
+
+
+<script>
+    document.querySelectorAll('.complete-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const formId = button.parentElement.id;
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Handle success (e.g., update UI)
+                    // For example, you can hide or disable the button
+                    button.disabled = true;
+                    button.textContent = 'Completed';
+                } else {
+                    // Handle error
+                    console.error('Failed to complete service request');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
+
+        {% comment %}
+        <script>
+             function confirmRequest(requestId) {
+            // Display a confirmation dialog
+            if (confirm("Are you sure you want to confirm?")) {
+                // If the user clicks "OK", proceed with the request
+                fetch(`/confirm-request/${requestId}/`)
+                    .then(response => {
+                        if (response.ok) {
+                            // Handle success (e.g., update UI)
+                            // Change the button text to "Confirmed"
+                            document.getElementById(`confirm-button-${requestId}`).innerText = "Confirmed";
+                            // Optionally, you can also change the button color or style
+                        } else {
+                            // Handle error
+                            console.error('Error:', response.statusText);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                // If the user clicks "Cancel", do nothing
+                return false;
+            }
+        }
+    </script>
+
+
+    <script>
+        function confirmRequest(requestId) {
+            fetch(`/confirm-request/${requestId}/`)
+                .then(response => {
+                    if (response.ok) {
+                        // Update button text to "Confirmed"
+                        document.getElementById(`confirmBtn-${requestId}`).textContent = 'Confirmed';
+                    } else {
+                        // Handle error
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>     
+
+    <script>
+        function confirmRequest(requestId) {
+            if (confirm("Are you sure you want to confirm?")) {
+                fetch(`/confirm-service-request/${requestId}/`)
+                    .then(response => {
+                        if (response.ok) {
+                            document.getElementById(`confirmBtn-${requestId}`).textContent = 'Confirmed';
+                        } else {
+                            console.error('Failed to confirm service request');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                return false;
+            }
+        }
+    </script> {% endcomment %}
+
+    {% comment %} <script>
+        function confirmRequest(requestId) {
+            if (confirm("Are you sure you want to confirm?")) {
+                fetch(`/confirm-service-request/${requestId}/`)
+                    .then(response => {
+                        if (response.ok) {
+                            document.getElementById(`confirmBtn-${requestId}`).textContent = 'Confirmed';
+                        } else {
+                            console.error('Failed to confirm service request');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                return false;
+            }
+        }
+    </script> {% endcomment %}
+</body>
+
+</html>

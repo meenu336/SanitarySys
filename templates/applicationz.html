@@ -1,0 +1,197 @@
+<!-- hr_manager_view.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sanitary Ware Shop Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #f4f4f4;
+            float: left;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            transition: background 0.3s ease;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .sidebar ul li a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Sanitary Ware Shop</div>
+        <div class="profile">
+    
+            <span class="welcome">Welcome, Admin</span>
+            <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    {% comment %} <div class="sidebar">
+        <ul>
+            <li><a href="#">View Products</a></li>
+        
+            <li><a href="{% url 'viewproductss' %}">View Products</a></li>
+            <li><a href="{% url 'user-list' %}">Users</a></li>
+            <li><a href="{% url 'stockmgr_registration' %}">Add SM</a></li>
+            <li><a href="{% url 'applicationz' %}">Add </a></li>
+        </ul>
+    </div> {% endcomment %}
+
+    <div class="main-content">
+
+        <div class="container">
+    <h1>Job Applications</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Vehicle Type</th>
+                <th>Vehicle number</th>
+                <th>License</th>
+                <th>Highest Education</th>
+                <th>Languages known</th>
+                <th>Years of Experience</th>
+                <th>Resume</th>
+                <!-- Add other fields as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in job_applications %}
+                <tr>
+                    <td>{{ application.job_title }}</td>
+                    <td>{{ application.full_name }}</td>
+                    <td>{{ application.email }}</td>
+                    <td>{{ application.phone}}</td>
+                    <td>{{ application.gender}}</td>
+                    <td>{{ application.full_address}}</td>
+                    <td>{{ application.vehicle_type}}</td>
+                    <td>{{ application.vehicle_number}}</td>
+                    <td><a href="{{ application.license.url }}" download>Download License</a></td>
+                    <td>{{ application.highest_education}}</td>
+                    <td>{{ application.languages_known}}</td>
+                    <td>{{ application.years_of_experience}}</td>
+                    <td><a href="{{ application.resume.url }}" download>Download Resume</a></td>
+                    <!-- Add other fields as needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>

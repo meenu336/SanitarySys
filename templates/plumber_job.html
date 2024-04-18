@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add the CSS styles here */
+        table {
+            width: 100%;
+            max-width: 600px; /* Adjust the max-width as needed */
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea {
+            width: calc(50% - 12px); /* Adjust the width to make room for borders */
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            align:center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .default-profile-image {
+            width: 30px; /* Set the desired width for the default image */
+            height: 30px; /* Set the desired height for the default image */
+          }
+          
+          /* Navbar dropdown */
+      .navbar-nav {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+      }
+      
+      .nav-item {
+        position: relative;
+      }
+      
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        min-width: 200px;
+        padding: 10px 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+      }
+      
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 8px 20px;
+        text-decoration: none;
+        color: #333;
+      }
+      
+      /* Main options */
+      .main-option {
+        cursor: pointer;
+      }
+      
+      /* Sub-options */
+      .sub-options {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: none;
+       
+      }
+      left: 100%;
+      .sub-options .dropdown-item {
+        white-space: nowrap;
+      }
+      
+      /* Show sub-options on hover */
+      .nav-item:hover .sub-options {
+        display: block;
+      }
+      
+      .small-profile-image {
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+      }
+
+      h2 {
+        text-align: center;
+      }
+    
+      .header_area {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        background-color: #fff; /* Adjust the background color as needed */
+    }
+    
+    .navbar {
+        position: relative;
+    }
+    
+    /* Add padding to the body to avoid content being hidden under the fixed header */
+    body {
+        padding-top: 100px; /* Adjust the padding-top based on your header height */
+    }
+    </style>
+</head>
+
+<body>
+    <h2>Job Application Form</h2>
+
+    <form action="{% url 'apply' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="job-application-form">
+            <tr>
+                <th><label for="full_name">Full Name:</label></th>
+                <td><input type="text" id="full_name" name="full_name" class="form-control" value="{{ user_profile.first_name }} {{ user_profile.last_name }}" required></td>
+                <td><span class="error-message" id="full-name-error"></span></td>
+            </tr>
+            <tr>
+                <th><label for="email">Email:</label></th>
+                <td><input type="email" id="email" name="email" class="form-control" value="{{ user_profile.user.email }}" required></td>
+                <td><span class="error-message" id="email-error"></span></td>
+            </tr>
+            <tr>
+                <th><label for="phone">Phone Number:</label></th>
+                <td><input type="tel" id="phone" name="phone" class="form-control" value="{{ user_profile.phone_number }}" required></td>
+                <td><span class="error-message" id="phone-error"></span></td>
+            </tr>
+            <tr>
+                <th><label for="gender">Gender:</label></th>
+                <td>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="full_address">Full Address:</label></th>
+                <td colspan="2"><textarea id="full_address" name="full_address" class="form-control" rows="4" cols="50" required>{{ user_profile.address }}{{ user_profile.city }}{{ user_profile.state }}{{ user_profile.pincode }}</textarea></td>
+            </tr>
+            <tr>
+                <th><label for="highest_education">Highest Education:</label></th>
+                <td>
+                    <select id="highest_education" name="highest_education" required>
+                        <option value="10th">10th Level</option>
+                        <option value="12th">12th Level</option>
+                        <option value="degree">Degree</option>
+                        <option value="degree">Diploma</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="languages_known">Languages Known:</label></th>
+                <td colspan="2"><input type="text" id="languages_known" name="languages_known" required></td>
+            </tr>
+            <tr>
+                <th><label for="years_of_experience">Years of Experience:</label></th>
+                <td>
+                    <select id="years_of_experience" name="years_of_experience" required>
+                        <option value="0">0</option>
+                        <option value="1-2">1-2</option>
+                        <option value="2-3">2-3</option>
+                        <option value="3-5">3-5</option>
+                        <option value="more">More than 5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="resume">Upload Resume (PDF only):</label></th>
+                <td colspan="2"><input type="file" id="resume" name="resume" accept=".pdf" required></td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+
+</html>

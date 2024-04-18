@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sanitary Ware Shop Admin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .welcome {
+            font-weight: bold;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .content {
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        /* Add space between list items and style as boxes with colors */
+        .sidebar li {
+            margin-bottom: 10px;
+            padding: 30px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        
+        /* Style specific list items differently */
+        .sidebar li:nth-child(1) {
+            background-color: #ff9999; 
+/* Add Products */
+        }
+        
+        .sidebar li:nth-child(2) {
+            background-color: #66b3ff; /* View Products */
+        }
+        
+        .sidebar li:nth-child(3) {
+            background-color: #99ff99; /* Analytics */
+        }
+        
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .sidebar-button {
+            background-color: #ddd;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .sidebar-button:hover {
+            background-color: #ccc;
+        }
+        .sidebar ul li a {
+            text-decoration: none; /* Remove underline from anchor elements */
+            color: inherit; /* Use the default text color for the links */
+        }
+
+        /* Add styles for the logout button */
+.logout-btn {
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn .btn {
+    background-color: #ff3333; /* Red color for the logout button */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none; /* Remove underline from the anchor element */
+    border-radius: 5px;
+    margin-left: 20px; /* Adjust the margin as needed */
+}
+
+.logout-btn .btn:hover {
+    background-color: #ff6666; /* Darker red color on hover */
+}
+
+.sidebar li {
+    margin-bottom: 50px; /* Increase the margin between list items */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+}
+        
+.sidebar li {
+    margin-bottom: 100px; /* Increase the margin between list items */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Style specific list items differently */
+.sidebar li:nth-child(1) {
+    background-color: #ff9999;
+}
+
+.sidebar li:nth-child(2) {
+    background-color: #66b3ff;
+}
+
+/* Add border to the list items */
+.sidebar li {
+    border: 2px solid #ccc;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="profile">
+                <span class="welcome">Welcome, Stock Manager</span>
+            </div>
+            
+            <div class="logout-btn">
+                <a href="{% url 'logout' %}" class="btn">Logout</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="sidebar">
+            <h2>Options</h2>
+            <ul>
+               
+                <li><a href="{% url 'addproduct' %}">Add Products</a></li>
+                <li><a href="{% url 'viewproduct' %}">View Products</a></li>
+                <!--<button class="sidebar-button"><a href="{% url 'addproduct' %}">Add Products</a></button>-->
+                <li><a href="{% url 'editproduct' %}">Edit Products</a></li>
+                
+            </ul>
+        </div>
+        <div class="main-content">
+            <!-- Content for orders received, add product here, view your products -->
+            
+            
+        </div>
+    </div>
+</body>
+
+</html>

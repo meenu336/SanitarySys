@@ -1,0 +1,605 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Service Request</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/linericon/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/themify-icons.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/flaticon.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/owl-carousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/lightbox/simpleLightbox.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/nice-select/css/nice-select.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/animate-css/animate.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/jquery-ui/jquery-ui.css' %}" />
+  <!-- main css -->
+  <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/responsive.css' %}" />
+  <script>
+    // Get today's date in yyyy-mm-dd format
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+
+    // Set the minimum date for the select_date input to today's date
+    document.getElementById("select_date").min = today;
+</script>
+
+
+
+    <style>
+         body {
+            {% comment %} display: flex; 
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            margin: 0;  {% endcomment %}
+        }  
+        h2 {
+            text-align: center;
+            margin-top: 80px;
+        }
+        form {
+            
+            width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    /* margin: 0; */
+   
+    margin-left: 250px;
+    margin-top: -53px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea,
+        input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .default-profile-image {
+            width: 30px; /* Set the desired width for the default image */
+            height: 30px; /* Set the desired height for the default image */
+          }
+          
+          /* Navbar dropdown */
+      .navbar-nav {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+      }
+      
+      .nav-item {
+        position: relative;
+      }
+      
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        min-width: 200px;
+        padding: 10px 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+      }
+      
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 8px 20px;
+        text-decoration: none;
+        color: #333;
+      }
+      
+      /* Main options */
+      .main-option {
+        cursor: pointer;
+      }
+      
+      /* Sub-options */
+      .sub-options {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: none;
+       
+      }
+      left: 100%;
+      .sub-options .dropdown-item {
+        white-space: nowrap;
+      }
+      
+      /* Show sub-options on hover */
+      .nav-item:hover .sub-options {
+        display: block;
+      }
+      
+      .small-profile-image {
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+      }
+
+      .header_area {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Adjust the z-index as needed */
+    }
+    
+    </style>
+</head>
+<body class="bodyy">
+    <!--================Header Menu Area =================-->
+  <header class="header_area">
+    <div class="top_menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="float-left">
+              <p>Phone: +01 256 25 235</p>
+              <p>email: info@eiser.com</p>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="float-right">
+              <ul class="right_side">
+                <li>
+                  <!--<a href="cart.html">
+                    gift card
+                  </a>-->
+                </li>
+                <li>
+                  <!--<a href="tracking.html">
+                    track order
+                  </a>-->
+                </li>
+                <li>
+                  <!--<a href="contact.html">
+                    Contact Us
+                  </a>-->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main_menu">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light w-100">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand logo_h" href="index.html">
+            <img src="{% static '/img/logo3.png' %}" alt="" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+            <div class="row w-100 mr-0">
+              <div class="col-lg-7 pr-0">
+                <ul class="nav navbar-nav center_nav pull-right">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                  </li>
+                  
+
+                  <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-toggle" href="#" id="showersDropdown">Showers</a>
+                        <div class="dropdown-menu" aria-labelledby="showersDropdown" id="showerSubCategories">
+                            <a class="dropdown-item" href="{% url 'built_in_showers' %}">Built-in Showers</a>
+                            <a class="dropdown-item" href="{% url 'standalone_showers' %}">Standalone Showers</a>
+                        </div>
+                        <a class="dropdown-item dropdown-toggle" href="#" id="basinsDropdown">Basins</a>
+                        <div class="dropdown-menu" aria-labelledby="basinsDropdown" id="basinsSubCategories">
+                            <a class="dropdown-item" href="{% url 'full_pedestal_basins' %}">Full Pedestal Basins</a>
+                            <a class="dropdown-item" href="{% url 'semi_pedestal_basins' %}">Semi Pedestal Basins</a>
+                        </div>
+                    </div>
+                </li>
+                
+                
+                
+                
+                
+                
+                  <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false"><a href="{% url 'submit_service_request' %}" class="nav-link">Services</a>
+                    <ul class="dropdown-menu">
+                      
+                    
+                      <!--<li class="nav-item">
+                        <a class="nav-link" href="blog.html">Services</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="single-blog.html">Blog Details</a>
+                      </li>-->
+                    </ul>
+                  </li>
+                  <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false">Career</a>
+                    <ul class="dropdown-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'apply' %}">Apply now</a>
+                      </li>
+                      <!--<li class="nav-item">
+                        <a class="nav-link" href="elements.html">Elements</a>
+                      </li>-->
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-lg-5 pr-0">
+                <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                  <li class="nav-item">
+                    <a href="#" class="icons">
+                      <i class="ti-search" aria-hidden="true"></i>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{% url 'cart' %}" class="icons">
+                      <i class="ti-shopping-cart"></i>
+                    </a>
+                  </li>
+
+                  
+                  
+                  
+
+                  <a class="nav-link scrollto" href="{% url 'profile' %}" id="usernameDropdown" name="image" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong> Welcome, {{ user.username }}</strong> <i class="bi bi-caret-down"></i>
+                    <div class="profile-picture-round">
+                      {% if user_profile.image %}
+                        <!-- Link the profile picture to the profile page -->
+                        <a href="{% url 'profile' %}">
+                          <img src="{{ user_profile.image.url }}" alt="User Profile Picture" class="profile-image  small-profile-image" >
+                        </a>
+                      {% else %}
+                        <!-- Display the default profile picture with a specific size linked to the profile page -->
+                        <a href="{% url 'profile' %}">
+                          <img src="{% static '/img/default image.jpg' %}" alt="Default Profile Picture" class="default-profile-image small-profile-image">
+                        </a>
+                      {% endif %}
+                    </div>
+                  </a>
+                  
+                  
+                  
+                  <!--<li class="nav-item">
+                    <a href="{% url 'profile' %}" class="icons">
+                      <div class="profile-image">
+                        {% if user.profile_image %}
+                          <img src="{{ user.profile_image.url }}" alt="{{ user.username }}'s Profile Image">
+                        {% else %}
+                          <i class="ti-user" aria-hidden="true"></i> <!-- Placeholder icon if user has no profile image -->
+                        <!--{% endif %}
+                        {{ user.username }}
+                      </div>
+                    </a>
+                  </li>-->
+                  
+
+                  <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="icons" id="logout-link">
+                      <i class="fa fa-power-off"></i>
+                        <!--<i class="ti-heart" aria-hidden="true"></i>-->
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <br><br>
+  <h2>Submit Service Request</h2>
+<form method="post" action="{% url 'submit_service_request' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th><label for="first_name">First Name:</label></th>
+             <td>
+                {% comment %} <input type="text" id="first_name" name="first_name" value="{{ user_profile.first_name }}" required>
+                <span class="error-message" id="first_name_error"></span> {% endcomment %}
+                <input type="text" id="first_name" name="first_name" placeholder="First Name" value="{{ user_profile.first_name }}" required>
+                <span class="error-message" id="first-name-error"></span>
+            </td> 
+            
+        </tr>
+        <tr>
+            <th><label for="last_name">Last Name:</label></th>
+            <td>
+                {% comment %} <input type="text" id="last_name" name="last_name" placeholder="Last Name" value="{{ user_profile.last_name }}" required>
+                <span class="error-message" id="last_name_error"></span>  {% endcomment %}
+                <input type="text" id="last_name" name="last_name" placeholder="Last Name" value="{{ user_profile.last_name }}"required>
+                <span class="error-message" id="last-name-error"></span>
+                
+            </td>
+        </tr>
+        <tr>
+            <th><label for="email">Email:</label></th>
+             {% comment %} <td><input type="email" id="email" name="email" value="{{ email }}" required></td>  {% endcomment %}
+             <td>
+              <input type="email" id="email" name="email" placeholder="Email" value="{{ email }}" required>
+              <span class="error-message" id="email-error"></span>
+          </td> 
+        </tr>
+        <tr>
+            <th><label for="phone">Phone Number:</label></th>
+            {% comment %} <td><input type="tel" id="phone" name="phone" value="{{ phone_number }}" required></td>  {% endcomment %}
+            <td>
+              <input type="tel" id="phone" name="phone" placeholder="Phone Number" value="{{ phone_number }}" required>
+              <span class="error-message" id="phone-error"></span>
+          </td> 
+        </tr>
+        <tr>
+            <th><label for="address">Address:</label></th>
+           {% comment %} <td><input type="text" id="address" name="address" value="{{ user_profile.address }}" required></td>  {% endcomment %}
+             <td>
+            <input type="text" id="address" name="address" placeholder="Address" value="{{ user_profile.address }}" required>
+            <span class="error-message" id="address-error"></span>
+            </td> 
+        </tr>
+        <tr>
+            <th><label for="city">City:</label></th>
+             {% comment %} <td><input type="text" id="city" name="city" value="{{ user_profile.city }}" required></td> {% endcomment %}
+             <td>
+            <input type="text" id="city" name="city" placeholder="City" value="{{ user_profile.city }}" required>
+            <span class="error-message" id="city-error"></span>
+            </td> 
+        </tr>
+        <tr>
+            <th><label for="pincode">Pincode:</label></th>
+           {% comment %} <td><input type="text" id="pincode" name="pincode" value="{{ user_profile.pincode }}" required></td>  {% endcomment %}
+            <td>
+            <input type="text" id="pincode" name="pincode" placeholder="Pincode" value="{{ user_profile.pincode }}" required>
+             <span class="error-message" id="pincode-error"></span>
+            </td> 
+        </tr>
+        {% comment %} <tr>
+            <th><label for="district">District:</label></th>
+            <td><input type="text" id="district" name="district" required></td>
+        </tr> {% endcomment %}
+        <tr>
+          <th><label for="district">District:</label></th>
+          <td>
+              <select id="district" name="district" required>
+                  <option value="">Select District</option>
+                  <option value="Pathanamthitta">Pathanamthitta</option>
+                  <option value="yyyy">yyyy</option>
+                  <option value="dfgdghf">dfgdghf</option>
+                  <!-- Add more options as needed -->
+              </select>
+          </td>
+      </tr>
+      <tr>
+        <th><label for="service_required">Service Required:</label></th>
+        <td>
+            <select id="service_required" name="service_required" required>
+              <option value="">Select Service</option>
+              {% for service_type in service_types %}
+                  <option value="{{ service_type.name }}">{{ service_type.name }}</option>
+              {% endfor %}
+            </select>
+        </td>
+    </tr>
+        <tr>
+             <th><label for="description">Description:</label></th>
+            {% comment %} <td><textarea id="description" name="description" rows="4" cols="50" required></textarea></td>  {% endcomment %} 
+           <td> <textarea id="description" name="description" rows="4" cols="50" placeholder="Description" required></textarea>
+            <span class="error-message" id="description-error"></span></td>
+        </tr>
+        <tr>
+          <th><label for="select_date">Select Date:</label></th>
+          <td><input type="date" id="select_date" name="select_date" required></td>
+      </tr>
+        <tr>
+            <td colspan="2"><button type="submit">Submit Request</button></td>
+        </tr>
+    </table>
+</form>
+
+
+<script>
+  var firstNameInput = document.getElementById('first_name');
+  var firstNameError = document.getElementById('first-name-error');
+  firstNameInput.addEventListener('input', function() {
+      validateFirstName(firstNameInput.value);
+  });
+
+  function validateFirstName(firstName) {
+      firstNameError.textContent = "";
+      if (/\d/.test(firstName)) {
+          firstNameError.textContent = "First name cannot contain numbers.";
+      }
+      if (/[!@#$%^&*(),.?":{}|<>]/.test(firstName)) {
+          firstNameError.textContent = "First name cannot contain special characters.";
+      }
+  }
+</script>
+
+<script>
+  var lastNameInput = document.getElementById('last_name');
+  var lastNameError = document.getElementById('last-name-error');
+  lastNameInput.addEventListener('input', function() {
+      validateLastName(lastNameInput.value);
+  });
+
+  function validateLastName(lastName) {
+      lastNameError.textContent = "";
+      if (/\d/.test(lastName)) {
+          lastNameError.textContent = "Last name cannot contain numbers.";
+      }
+      if (/[!@#$%^&*(),.?":{}|<>]/.test(lastName)) {
+          lastNameError.textContent = "Last name cannot contain special characters.";
+      }
+  }
+
+
+  var emailInput = document.getElementById('email');
+  var emailError = document.getElementById('email-error');
+  emailInput.addEventListener('input', function() {
+      validateEmail(emailInput.value);
+  });
+
+  function validateEmail(email) {
+      emailError.textContent = "";
+      var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      if (!emailRegex.test(email)) {
+          emailError.textContent = "Enter a valid email address.";
+      }
+  }
+
+  var phoneInput = document.getElementById('phone');
+  var phoneError = document.getElementById('phone-error');
+  phoneInput.addEventListener('input', function() {
+      validatePhone(phoneInput.value);
+  });
+
+  function validatePhone(phone) {
+      phoneError.textContent = "";
+      var phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phone)) {
+          phoneError.textContent = "Enter a valid 10-digit phone number.";
+      }
+  }
+</script>
+
+<script>
+  var addressInput = document.getElementById('address');
+  var addressError = document.getElementById('address-error');
+  addressInput.addEventListener('input', function() {
+      validateAddress(addressInput.value);
+  });
+
+  function validateAddress(address) {
+      addressError.textContent = "";
+      if (/[^a-zA-Z\s]/.test(address)) {
+          addressError.textContent = "Address cannot contain special characters or numbers.";
+      }
+  }
+
+  var cityInput = document.getElementById('city');
+  var cityError = document.getElementById('city-error');
+  cityInput.addEventListener('input', function() {
+      validateCity(cityInput.value);
+  });
+
+  function validateCity(city) {
+      cityError.textContent = "";
+      if (/[^a-zA-Z\s]/.test(city)) {
+          cityError.textContent = "City cannot contain special characters or numbers.";
+      }
+  }
+
+  var pincodeInput = document.getElementById('pincode');
+  var pincodeError = document.getElementById('pincode-error');
+  pincodeInput.addEventListener('input', function() {
+      validatePincode(pincodeInput.value);
+  });
+
+  function validatePincode(pincode) {
+      pincodeError.textContent = "";
+      if (/\D/.test(pincode)) {
+          pincodeError.textContent = "Pincode must contain only numbers.";
+      } else if (pincode.length > 6) {
+          pincodeError.textContent = "Pincode cannot exceed 6 digits.";
+      }
+  }
+
+  var descriptionInput = document.getElementById('description');
+  var descriptionError = document.getElementById('description-error');
+  descriptionInput.addEventListener('input', function() {
+      validateDescription(descriptionInput.value);
+  });
+
+  function validateDescription(description) {
+      descriptionError.textContent = "";
+      if (/[^a-zA-Z\s]/.test(description)) {
+          descriptionError.textContent = "Description cannot contain special characters or numbers.";
+      }
+  }
+</script>
+
+
+<script>
+  // Get today's date
+  var today = new Date();
+  var todayFormatted = today.toISOString().split('T')[0];
+
+  // Calculate two months later from today
+  var twoMonthsLater = new Date();
+  twoMonthsLater.setMonth(today.getMonth() + 2);
+  var twoMonthsLaterFormatted = twoMonthsLater.toISOString().split('T')[0];
+
+  // Set the minimum and maximum date for the select_date input field
+  document.getElementById('select_date').setAttribute('min', todayFormatted);
+  document.getElementById('select_date').setAttribute('max', twoMonthsLaterFormatted);
+</script>
+</body>
+</html>

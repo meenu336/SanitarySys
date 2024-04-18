@@ -1,0 +1,400 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <style>
+        /* Add custom CSS styles here */
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            margin-left: 100 px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 50px auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #cc0000;
+        }
+        .header {
+            background-color: #003300;
+            color: #fff;
+            text-align: left;
+            padding: 9px;
+            position: relative; /* Needed for absolute positioning of the logo */
+            width: 100%;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .welcome {
+            font-weight: bold;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .content {
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        /* Add space between list items and style as boxes with colors */
+        .sidebar li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        
+        /* Style specific list items differently */
+        .sidebar li:nth-child(1) {
+            background-color: #ff9999; /* Add Products */
+        }
+        
+        .sidebar li:nth-child(2) {
+            background-color: #66b3ff; /* View Products */
+        }
+        
+        .sidebar li:nth-child(3) {
+            background-color: #99ff99; /* Analytics */
+        }
+        
+        .sidebar li:nth-child(4) {
+            background-color: #ffcc99; /* My Orders */
+        }
+        
+        .sidebar li:nth-child(5) {
+            background-color: #ffcc00; /* Partners */
+        }
+        
+        .sidebar li:nth-child(6) {
+            background-color: #ccffcc; /* Calendar */
+        }
+        
+        .sidebar li:nth-child(7) {
+            background-color: #ffccff; /* Users */
+        }
+        
+        .sidebar li:nth-child(8) {
+            background-color: #cc99ff; /* Sales */
+        }
+        
+        .sidebar li:nth-child(9) {
+            background-color: #ff6666; /* Orders Received */
+        }
+        
+        .sidebar li:nth-child(10) {
+            background-color: #66cc66; /* Add Product Here */
+        }
+        
+        .sidebar li:nth-child(11) {
+            background-color: #ff9933; /* View Your Products */
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .sidebar-button {
+            background-color: #ddd;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .sidebar-button:hover {
+            background-color: #ccc;
+        }
+        .sidebar ul li a {
+            text-decoration: none; /* Remove underline from anchor elements */
+            color: inherit; /* Use the default text color for the links */
+        }
+        
+    </style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="profile">
+    
+                <span class="welcome">Welcome, Stock Manager</span>
+            </div>
+            
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="sidebar">
+            <h2>Options</h2>
+            <ul>
+               
+                <li><a href="{% url 'addproduct' %}">Add Products</a></li>
+                <li><a href="{% url 'viewproduct' %}">View Products</a></li>
+                <!--<button class="sidebar-button"><a href="{% url 'addproduct' %}">Add Products</a></button>-->
+                <li>Analytics</li>
+                <li>My Orders</li>
+                <li>Partners</li>
+                <li>Calendar</li>
+                <li>Users</li>
+                <li>Sales</li>
+                <li>Orders Received</li>
+                <li>Add Product Here</li>
+                <li>View Your Products</li>
+            </ul>
+        </div>
+    
+        
+        {% comment %} <div class="hero_area">
+           <!-- header section strats -->
+           <header class="header_section" style="background-color: white;">
+    
+              {% comment %} <div class="container">
+                 <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <!--<a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""> </span>
+                    </button> 
+                   
+              </div>
+            </header> {% endcomment %}
+            
+            <section class="inner_page_head">
+        
+                <div class="container_fuild">
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full">
+                                {% comment %} <h class="left-corner-heading"><strong><center>EDIT PRODUCT</center></strong></h2> {% endcomment %}
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            </section>
+
+    <div class="container">
+       
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Edit Product Form Fields -->
+            <label for="product-name">Product Name</label>
+            <input type="text" name="product-name" value="{{ product.product_name }}" required>
+            
+            <label for="category-name">Category Name</label>
+            <select id="category-name" name="category-name" class="form-control" required>
+                <option value="">Select</option>
+                <option value="shower" {% if product.category == 'shower' %}selected{% endif %}>Shower</option>
+                <option value="basins" {% if product.category == 'basins' %}selected{% endif %}>Basins</option>
+                <!-- Add more categories as needed -->
+            
+
+                
+                <!-- Add more categories as needed -->
+            </select>
+       
+            <label for="subcategory-name">Subcategory Name</label>
+            <select id="subcategory-name" name="subcategory-name" class="form-control" required>
+                {% for option in subcategory_options %}
+                <option value="{{ option }}" {% if option == selected_subcategory %}selected{% endif %}>{{ option }}</option>
+                {% endfor %}
+            </select>
+       
+
+            
+            <!-- Other form fields -->
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" value="{{ product.quantity }}" required>
+        
+            <label for="description">Description</label>
+            <textarea name="description" required>{{ product.description }}</textarea>
+        
+            <label for="price">Product Price</label>
+            <input type="number" name="price" value="{{ product.price }}" required>
+        
+            <label for="discount">Discount (%)</label>
+            <input type="number" name="discount" value="{{ product.discount }}" oninput="calculateSalePrice()">
+        
+            <label for="sale-price">Sale Price</label>
+            <input type="number" name="sale-price" value="{{ product.sale_price }}" readonly>
+            
+            <label for="status">Status</label>
+<select name="status" required>
+    <option value="active" {% if product.status == "active" %} selected {% endif %}>Active</option>
+    <option value="inactive" {% if product.status == "inactive" %} selected {% endif %}>Inactive</option>
+</select>
+
+            {% comment %} <label for="price">Status</label>
+            <input type="number" name="status" value="{{ product.status }}" required> {% endcomment %}
+        
+            <!-- Display the product image -->
+            <label for="product_image">Product Image</label>
+            {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+            {% else %}
+                    No image available
+            {% endif %}
+            <input type="file" id="product_image" name="product_image" accept=".jpeg, .jpg, .png">
+        
+            <button type="submit">Update Product</button>
+        </form>
+        
+    </div>
+
+
+
+    <script>
+        // JavaScript code to update subcategory options dynamically based on the selected category goes here
+        // JavaScript code to update subcategory options dynamically based on the selected category goes here
+        function updateSubcategoryOptions() {
+            const categoryDropdown = document.getElementById("category-name");
+            const subcategoryDropdown = document.getElementById("subcategory-name");
+            const selectedCategory = categoryDropdown.value;
+            const subcategoryOptions = {
+                'shower': ['built-in showers', 'Standalone shower'],
+                'basins': ['Full Pedestal Basins', 'Semi Pedestal Basins'],
+                // Add more categories and their respective subcategories as needed
+            };
+    
+            // Clear existing options
+            subcategoryDropdown.innerHTML = "";
+    
+            // Add new options based on the selected category
+            for (const option of subcategoryOptions[selectedCategory]) {
+                const optionElement = document.createElement("option");
+                optionElement.value = option;
+                optionElement.textContent = option;
+                subcategoryDropdown.appendChild(optionElement);
+            }
+    
+            // Preselect the previously chosen subcategory
+            const selectedSubcategory = "{{ product.subcategory }}"; // Ensure this matches the variable name in your Django template
+            const subcategoryOptionsList = Array.from(subcategoryDropdown.options).map(option => option.value);
+            if (subcategoryOptionsList.includes(selectedSubcategory)) {
+                subcategoryDropdown.value = selectedSubcategory;
+            }
+        }
+    
+        // Execute the function when the category dropdown selection changes
+        document.getElementById("category-name").addEventListener("change", updateSubcategoryOptions);
+    
+        // Initial call to populate subcategories based on the initial selected category
+        updateSubcategoryOptions();
+        <!-- Add this to your HTML file inside the <head> section -->
+           
+                // Function to calculate the sale price
+                function calculateSalePrice() {
+                    const priceInput = document.querySelector('input[name="price"]');
+                    const discountInput = document.querySelector('input[name="discount"]');
+                    const salePriceInput = document.querySelector('input[name="sale-price"]');
+                    
+                    const price = parseFloat(priceInput.value);
+                    const discount = parseFloat(discountInput.value);
+            
+                    // Check if both price and discount are valid numbers
+                    if (!isNaN(price) && !isNaN(discount)) {
+                        const salePrice = price - (price * (discount / 100));
+                        salePriceInput.value = salePrice.toFixed(2); // Display with 2 decimal places
+                    } else {
+                        salePriceInput.value = ""; // Clear the sale price if inputs are invalid
+                    }
+                }
+                
+                // Initial call to calculate sale price when the page loads
+                window.addEventListener('load', calculateSalePrice);
+            
+    </script>
+</body>
+</html>

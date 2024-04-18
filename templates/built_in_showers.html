@@ -1,0 +1,457 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Built-in Showers</title>
+    <!-- Add your CSS links or stylesheets here -->
+    <!-- Add your CSS links or stylesheets here -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <title>Eiser ecommerce</title>
+  <!-- Bootstrap CSS -->
+  
+
+  <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/linericon/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/themify-icons.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/flaticon.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/owl-carousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/lightbox/simpleLightbox.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/nice-select/css/nice-select.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/animate-css/animate.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/jquery-ui/jquery-ui.css' %}" />
+  <!-- main css -->
+  <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/responsive.css' %}" />
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    header {
+        background-color: #112418;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+    }
+    
+    .product-card {
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        padding: 20px;
+        width: 300px;
+        border-radius: 5px;
+    }
+    
+    .product-card img {
+        width: 100%;
+        
+        height: 200px; /* Set a fixed height for the images */
+        object-fit: cover;
+    }
+    
+    .product-details h2 {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+    
+    .no-products {
+        text-align: center;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+
+    .header-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .header-menu li {
+        display: inline-block;
+        margin-right: 10px; /* Adjust the spacing as needed */
+    }
+    
+    .header-menu a {
+        text-decoration: none;
+        color: #fff; /* Adjust the color as needed */
+    }
+    
+    .search-bar {
+        float: right; /* Float the search bar to the right */
+    }
+    
+    .search-bar input[type="text"] {
+        width: 150px; /* Adjust the width as needed */
+    }
+    
+    .search-bar button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    
+
+    .header-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: right; /* Align the menu items to the right */
+    }
+    
+    .header-menu li {
+        display: inline-block;
+        margin-right: 10px; /* Adjust the spacing as needed */
+    }
+    
+    .header-menu a {
+        text-decoration: none;
+        color: #fff; /* Adjust the color as needed */
+    }
+    
+    .search-bar {
+        float: right; /* Float the search bar to the right */
+    }
+    
+    .search-bar input[type="text"] {
+        width: 150px; /* Adjust the width as needed */
+    }
+    
+    .search-bar button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .Cart-icon {
+        color: white;
+    }
+    .Cart-icon {
+        filter: brightness(0) invert(1);
+    }
+
+    .small-profile-image {
+      width: 30px; /* Adjust width as needed */
+      height: 30px; /* Adjust height as needed */
+    }
+    .default-profile-image {
+      width: 30px; /* Set the desired width for the default image */
+      height: 30px; /* Set the desired height for the default image */
+    }
+    /* Define a class for the input field */
+    
+    .custom-search-container {
+      margin-left: 130px; /* Adjust the margin to move the search container away from the left margin */
+      margin-top: 20px; /* Adjust the margin to move the search container away from the header */
+    }
+/* Add more styling as needed */
+  </style>
+</head>
+<body>
+    <header class="header_area">
+        <div class="top_menu">
+          <div class="container">
+            <div class="row">
+              <!--<div class="col-lg-7">
+                <div class="float-left">
+                  <p>Phone: +01 256 25 235</p>
+                  <p>email: info@eiser.com</p>
+                </div>
+              </div>-->
+              <div class="col-lg-5">
+                <div class="float-right">
+                  <ul class="right_side">
+                    <li>
+                      <!--<a href="cart.html">
+                        gift card
+                      </a>-->
+                    </li>
+                    <li>
+                      <!--<a href="tracking.html">
+                        track order
+                      </a>-->
+                    </li>
+                    <li>
+                      <!--<a href="contact.html">
+                        Contact Us
+                      </a>-->
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main_menu">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <a class="navbar-brand logo_h" href="index.html">
+                <img src="{% static '/img/logo3.png' %}" alt="" />
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+                <div class="row w-100 mr-0">
+                  <div class="col-lg-7 pr-0">
+                    <ul class="nav navbar-nav center_nav pull-right">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                      </li>
+
+                      <li class="nav-item submenu dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="showersDropdown">Showers</a>
+                            <div class="dropdown-menu" aria-labelledby="showersDropdown" id="showerSubCategories">
+                                <a class="dropdown-item" href="{% url 'built_in_showers' %}">Built-in Showers</a>
+                                <a class="dropdown-item" href="{% url 'standalone_showers' %}">Standalone Showers</a>
+                            </div>
+                            <a class="dropdown-item dropdown-toggle" href="#" id="basinsDropdown">Basins</a>
+                            <div class="dropdown-menu" aria-labelledby="basinsDropdown" id="basinsSubCategories">
+                                <a class="dropdown-item" href="{% url 'full_pedestal_basins' %}">Full Pedestal Basins</a>
+                                <a class="dropdown-item" href="{% url 'semi_pedestal_basins' %}">Semi Pedestal Basins</a>
+                            </div>
+                        </div>
+                    </li>
+
+                      <li class="nav-item submenu dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                          aria-expanded="false">Services</a>
+                        <ul class="dropdown-menu">
+                          <!--<li class="nav-item">
+                            <a class="nav-link" href="blog.html">Services</a>
+                          </li>-->
+                          <!--<li class="nav-item">
+                            <a class="nav-link" href="single-blog.html">Blog Details</a>
+                          </li>-->
+                        </ul>
+                      </li>
+                      <li class="nav-item submenu dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                          aria-expanded="false">Career</a>
+                        <ul class="dropdown-menu">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Apply now</a>
+                          </li>
+                          <!--<li class="nav-item">
+                            <a class="nav-link" href="elements.html">Elements</a>
+                          </li>-->
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                      </li>
+                    </ul>
+                  </div>
+    
+                  
+    
+                      <li class="nav-item">
+                        <a href="{% url 'cart' %}" class="icons">
+                          <i class="ti-shopping-cart"></i>
+                        </a>
+                      </li>
+    
+                      <a class="nav-link scrollto" href="{% url 'profile' %}" id="usernameDropdown" name="image" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong> Welcome, {{ user.username }}</strong> <i class="bi bi-caret-down"></i>
+                        <div class="profile-picture-round">
+                          {% if user_profile.image %}
+                            <!-- Link the profile picture to the profile page -->
+                            <a href="{% url 'profile' %}">
+                              <img src="{{ user_profile.image.url }}" alt="User Profile Picture" class="profile-image  small-profile-image" >
+                            </a>
+                          {% else %}
+                            <!-- Display the default profile picture with a specific size linked to the profile page -->
+                            <a href="{% url 'profile' %}">
+                              <img src="{% static '/img/default image.jpg' %}" alt="Default Profile Picture" class="default-profile-image small-profile-image">
+                            </a>
+                          {% endif %}
+                        </div>
+                      </a>
+    
+                      <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="icons" id="logout-link">
+                          <i class="fa fa-power-off"></i>
+                            <!--<i class="ti-heart" aria-hidden="true"></i>-->
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+      {% comment %} <div class="search-container">
+        <form action="{% url 'search_products' %}" method="GET">
+          <input type="text" id="search-bar" name="query" placeholder="Search products">
+          <button type="submit" id="search-button">Search</button>
+      </form>
+    </div> {% endcomment %}
+    
+      <div class="custom-search-container">
+      <form action="{% url 'search_products' %}" method="GET">
+          <input type="text" id="search-bar" name="query" placeholder="Search products" style="width: 1000px;" class="custom-input">
+          <button type="submit" id="search-button">Search</button>
+      </form>
+  </div>
+  
+    <body>
+      <div class="product-container">
+        {% if search_results %}
+            {% for product in search_results %}
+                <!-- Display the search results -->
+                <div class="product-card">
+                    <a href="{% url 'product_detail' product_id=product.product_id %}">
+                        {% if product.product_image %}
+                            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+                        {% else %}
+                            <img src="{% static '/path_to_default_image/default_image.png' %}" alt="Default Image">
+                        {% endif %}
+                        <h3>{{ product.product_name }}</h3>
+                        <p>Sale Price: Rs. {{ product.sale_price }}</p>
+                        <p>Discount: {{ product.discount }}%</p>
+                        <p>Price: Rs. {{ product.price }}</p>
+                        <!-- Add other product details or description as needed -->
+                        <form method="post" action="{% url 'add-to-cart' product_id=product.product_id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                            <button type="submit">Add to Cart</button>
+                        </form>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <!-- If no search results, display all built-in products -->
+            {% for product in built_in_products %}
+                <div class="product-card">
+                    <a href="{% url 'product_detail' product_id=product.product_id %}">
+                        {% if product.product_image %}
+                            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+                        {% else %}
+                            <img src="{% static '/path_to_default_image/default_image.png' %}" alt="Default Image">
+                        {% endif %}
+                        <h3>{{ product.product_name }}</h3>
+                        <p>Sale Price: Rs. {{ product.sale_price }}</p>
+                        <p>Discount: {{ product.discount }}%</p>
+                        <p>Price: Rs. {{ product.price }}</p>
+                        <!-- Add other product details or description as needed -->
+                        <form method="post" action="{% url 'add-to-cart' product_id=product.product_id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                            <button type="add-to-cart-button">Add to Cart</button>
+                        </form>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+    
+    <script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+  <script src="{% static '/js/popper.js' %}"></script>
+  <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  <script src="{% static '/js/stellar.js' %}"></script>
+  <script src="{% static '/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+  <script src="{% static '/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static '/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static '/vendors/isotope/isotope-min.js' %}"></script>
+  <script src="{% static '/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static '/js/jquery.ajaxchimp.min.js' %}"></script>
+  <script src="{% static '/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static '/vendors/counter-up/jquery.counterup.js' %}"></script>
+  <script src="{% static '/js/mail-script.js' %}"></script>
+  <script src="{% static '/js/theme.js' %}"></script>
+    <!-- Add your footer or additional content here -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          var showersDropdown = document.getElementById('showersDropdown');
+          var basinsDropdown = document.getElementById('basinsDropdown');
+          var showerSubCategories = document.getElementById('showerSubCategories');
+          var basinsSubCategories = document.getElementById('basinsSubCategories');
+    
+          showersDropdown.addEventListener('click', function(event) {
+              event.preventDefault();
+              event.stopPropagation();
+    
+              basinsSubCategories.classList.remove('show');
+              showerSubCategories.classList.toggle('show');
+          });
+    
+          basinsDropdown.addEventListener('click', function(event) {
+              event.preventDefault();
+              event.stopPropagation();
+    
+              showerSubCategories.classList.remove('show');
+              basinsSubCategories.classList.toggle('show');
+          });
+    
+          // Close dropdowns when clicking outside
+          document.addEventListener("click", function(e) {
+              if (!e.target.closest('#showersDropdown') && !e.target.closest('#showerSubCategories')) {
+                  showerSubCategories.classList.remove('show');
+              }
+    
+              if (!e.target.closest('#basinsDropdown') && !e.target.closest('#basinsSubCategories')) {
+                  basinsSubCategories.classList.remove('show');
+              }
+          });
+      });
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search-form').submit(function(e) {
+                e.preventDefault();
+                var query = $('#search-bar').val();
+                $.ajax({
+                    type: 'GET',
+                    url: '{% url 'search_products' %}',
+                    data: {
+                        'query': query
+                    },
+                    success: function(response) {
+                        displayProducts(response);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+    
+            function displayProducts(products) {
+                // Implement code to display products based on the response
+                // For instance, replace the current product list with the filtered products
+                // Update the HTML with the filtered products
+                console.log(products); // For debugging, check the retrieved products in the console
+            }
+        });
+    </script>
+    
+
+  </body>
+</html>

@@ -1,0 +1,281 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eiser ecommerce</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/linericon/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/themify-icons.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/flaticon.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/owl-carousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/lightbox/simpleLightbox.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/nice-select/css/nice-select.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/animate-css/animate.css' %}" />
+  <link rel="stylesheet" href="{% static '/vendors/jquery-ui/jquery-ui.css' %}" />
+  <!-- main css -->
+  <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/responsive.css' %}" />
+    <title>Your Service request Submitted Successfully</title>
+    <style>
+        .default-profile-image {
+          width: 30px; /* Set the desired width for the default image */
+          height: 30px; /* Set the desired height for the default image */
+        }
+        
+        /* Navbar dropdown */
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+    }
+    
+    .nav-item {
+      position: relative;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      min-width: 200px;
+      padding: 10px 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+    
+    .dropdown-item {
+      display: block;
+      width: 100%;
+      padding: 8px 20px;
+      text-decoration: none;
+      color: #333;
+    }
+    
+    /* Main options */
+    .main-option {
+      cursor: pointer;
+    }
+    
+    /* Sub-options */
+    .sub-options {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      display: none;
+     
+    }
+    left: 100%;
+    .sub-options .dropdown-item {
+      white-space: nowrap;
+    }
+    
+    /* Show sub-options on hover */
+    .nav-item:hover .sub-options {
+      display: block;
+    }
+    
+    .small-profile-image {
+      width: 30px; /* Adjust width as needed */
+      height: 30px; /* Adjust height as needed */
+    }
+      </style>
+</head>
+
+<body>
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+      <div class="top_menu">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="float-left">
+                <p>Phone: +01 256 25 235</p>
+                <p>email: info@eiser.com</p>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="float-right">
+                <ul class="right_side">
+                  <li>
+                    <!--<a href="cart.html">
+                      gift card
+                    </a>-->
+                  </li>
+                  <li>
+                    <!--<a href="tracking.html">
+                      track order
+                    </a>-->
+                  </li>
+                  <li>
+                    <!--<a href="contact.html">
+                      Contact Us
+                    </a>-->
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main_menu">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand logo_h" href="index.html">
+              <img src="{% static '/img/logo3.png' %}" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+              <div class="row w-100 mr-0">
+                <div class="col-lg-7 pr-0">
+                  <ul class="nav navbar-nav center_nav pull-right">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    
+  
+                    <li class="nav-item submenu dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item dropdown-toggle" href="#" id="showersDropdown">Showers</a>
+                          <div class="dropdown-menu" aria-labelledby="showersDropdown" id="showerSubCategories">
+                              <a class="dropdown-item" href="{% url 'built_in_showers' %}">Built-in Showers</a>
+                              <a class="dropdown-item" href="{% url 'standalone_showers' %}">Standalone Showers</a>
+                          </div>
+                          <a class="dropdown-item dropdown-toggle" href="#" id="basinsDropdown">Basins</a>
+                          <div class="dropdown-menu" aria-labelledby="basinsDropdown" id="basinsSubCategories">
+                              <a class="dropdown-item" href="{% url 'full_pedestal_basins' %}">Full Pedestal Basins</a>
+                              <a class="dropdown-item" href="{% url 'semi_pedestal_basins' %}">Semi Pedestal Basins</a>
+                          </div>
+                      </div>
+                  </li>
+                  
+                  
+                  
+                  
+                  
+                  
+                    <li class="nav-item submenu dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false"><a href="{% url 'submit_service_request' %}" class="nav-link">Services</a>
+                      <ul class="dropdown-menu">
+                        
+                      
+                        <!--<li class="nav-item">
+                          <a class="nav-link" href="blog.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="single-blog.html">Blog Details</a>
+                        </li>-->
+                      </ul>
+                    </li>
+                    <li class="nav-item submenu dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">Career</a>
+                      <ul class="dropdown-menu">
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'apply' %}">Apply now</a>
+                        </li>
+                        <!--<li class="nav-item">
+                          <a class="nav-link" href="elements.html">Elements</a>
+                        </li>-->
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">About</a>
+                    </li>
+                  </ul>
+                </div>
+  
+                <div class="col-lg-5 pr-0">
+                  <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-search" aria-hidden="true"></i>
+                      </a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a href="{% url 'cart' %}" class="icons">
+                        <i class="ti-shopping-cart"></i>
+                      </a>
+                    </li>
+  
+                    
+                    
+                    
+  
+                    <a class="nav-link scrollto" href="{% url 'profile' %}" id="usernameDropdown" name="image" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <strong> Welcome, {{ user.username }}</strong> <i class="bi bi-caret-down"></i>
+                      <div class="profile-picture-round">
+                        {% if user_profile.image %}
+                          <!-- Link the profile picture to the profile page -->
+                          <a href="{% url 'profile' %}">
+                            <img src="{{ user_profile.image.url }}" alt="User Profile Picture" class="profile-image  small-profile-image" >
+                          </a>
+                        {% else %}
+                          <!-- Display the default profile picture with a specific size linked to the profile page -->
+                          <a href="{% url 'profile' %}">
+                            <img src="{% static '/img/default image.jpg' %}" alt="Default Profile Picture" class="default-profile-image small-profile-image">
+                          </a>
+                        {% endif %}
+                      </div>
+                    </a>
+                    
+                    
+                    
+                    <!--<li class="nav-item">
+                      <a href="{% url 'profile' %}" class="icons">
+                        <div class="profile-image">
+                          {% if user.profile_image %}
+                            <img src="{{ user.profile_image.url }}" alt="{{ user.username }}'s Profile Image">
+                          {% else %}
+                            <i class="ti-user" aria-hidden="true"></i> <!-- Placeholder icon if user has no profile image -->
+                          <!--{% endif %}
+                          {{ user.username }}
+                        </div>
+                      </a>
+                    </li>-->
+                    
+  
+                    <li class="nav-item">
+                      <a href="{% url 'logout' %}" class="icons" id="logout-link">
+                        <i class="fa fa-power-off"></i>
+                          <!--<i class="ti-heart" aria-hidden="true"></i>-->
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!--================Header Menu Area =================-->
+  
+<body>
+
+<h2>Your Service request Submitted Successfully</h2>
+<p>Thank you being a part of our website.</p>
+
+
+
+</body>
+</html>

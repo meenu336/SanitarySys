@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sanitary Ware Shop Admin</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    .navbar {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+    
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background-color: #f4f4f4;
+        float: left;
+    }
+    
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .sidebar ul li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .sidebar ul li a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .sidebar ul li a:hover {
+        color: #007bff;
+    }
+    
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+    
+    .footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .sidebar ul li a {
+        color: #fff;
+        background-color: #007bff;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        transition: background 0.3s ease;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .sidebar ul li a:hover {
+        background-color: #0056b3;
+    }
+    
+</style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">Sanitary Ware Shop</div>
+        <div class="profile">
+    
+            <span class="welcome">Welcome, Admin</span>
+            <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="#">View Products</a></li>
+        
+            <li><a href="{% url 'viewproductss' %}">View Products</a></li>
+            <li><a href="{% url 'user-list' %}">Users</a></li>
+            <li><a href="{% url 'plumber_reg' %}">Add SM</a></li>
+            <li><a href="{% url 'applicationz' %}">Job Application </a></li>
+            <li><a href="{% url 'add_service_type' %}">Service Type </a></li>
+            <li><a href="{% url 'service_types_list' %}">Service Type list </a></li>
+            <li><a href="{% url 'deliverboy_reg' %}">Deliveryboy </a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Your content goes here -->
+    
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Online Sanitary Ware Shop. All rights reserved.
+    </div>
+ 
+
+</body>
+
+</html>
